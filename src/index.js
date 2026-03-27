@@ -4,9 +4,9 @@
 
  const startButton = document.querySelector(".js-start-button");
  // TODO: Add the missing query selectors:
- const statusSpan; // Use querySelector() to get the status element
- const heading; // Use querySelector() to get the heading element
- const padContainer; // Use querySelector() to get the heading element
+ const statusSpan = document.querySelector(".js-status"); // Use querySelector() to get the status element
+ const heading = document.querySelector(".js-heading"); // Use querySelector() to get the heading element
+ const padContainerc = document.querySelector(".js-pad-container"); // Use querySelector() to get the heading element
 
 /**
  * VARIABLES
@@ -62,6 +62,7 @@ let roundCount = 0; // track the number of rounds that have been played so far
 
 padContainer.addEventListener("click", padHandler);
 // TODO: Add an event listener `startButtonHandler()` to startButton.
+startButton.addEventListener("click", startButtonHandler);
 
 /**
  * EVENT HANDLERS
@@ -82,6 +83,11 @@ padContainer.addEventListener("click", padHandler);
  *
  */
 function startButtonHandler() {
+  setLevel();
+  roundCount = 1;
+  document.querySelector(".js-start-button").classList.add("hidden");
+  document.querySelector(".js-status").classList.remove("hidden");
+  playComputerTurn();
   // TODO: Write your code here.
 
   return { startButton, statusSpan };
@@ -138,6 +144,9 @@ function padHandler(event) {
  *
  */
 function setLevel(level = 1) {
+  if (level < 1 || level > 4) {
+    return "Please enter level 1, 2, 3, or 4";
+  }
   // TODO: Write your code here.
 }
 
