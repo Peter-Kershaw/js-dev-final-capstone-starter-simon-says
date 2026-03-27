@@ -166,15 +166,16 @@ function setLevel(level = 1) {
  * getRandomItem([1, 2, 3, 4]) //> returns 1
  */
 function getRandomItem(collection) {
-  // if (collection.length === 0) return null;
-  // const randomIndex = Math.floor(Math.random() * collection.length);
-  // return collection[randomIndex];
+  if (collection.length === 0) return null;
+  const randomIndex = Math.floor(Math.random() * collection.length);
+  return collection[randomIndex];
 }
 
 /**
  * Sets the status text of a given HTML element with a given a message
  */
 function setText(element, text) {
+  element.textContent = text;
   // TODO: Write your code here.
   return element;
 }
@@ -193,6 +194,12 @@ function setText(element, text) {
  */
 
 function activatePad(color) {
+  const pad = pads.find((pad) => pad.color === color);
+  document.querySelector(pad.selector).classList.add("activated");
+  pad.sound.play();
+  setTimeout(() => {
+    document.querySelector(pad.selector).classList.remove("activated");
+  }, 500);
   // TODO: Write your code here.
 }
 
@@ -211,6 +218,11 @@ function activatePad(color) {
  */
 
 function activatePads(sequence) {
+  sequence.forEach((color, index) => {
+    setTimeout(() => {
+      activatePad(color);
+    }, 600 * index);
+  })
   // TODO: Write your code here.
 }
 
@@ -238,6 +250,11 @@ function activatePads(sequence) {
  * sequence.
  */
  function playComputerTurn() {
+  document.querySelector(".js-pad-container").classList.add("unclickable");
+  setText(statusSpan, "The computer's turn...");
+  setText(heading, `Round ${roundCount} of ${maxRoundCount}`);
+  computerSequence.push(getRandomItem(colors));
+  activatePads(computerSequence);
   // TODO: Write your code here.
 
   setTimeout(() => playHumanTurn(roundCount), roundCount * 600 + 1000); // 5
