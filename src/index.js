@@ -141,10 +141,10 @@ function padHandler(event) {
  *
  */
 function setLevel(level = 1) {
-  if (level === 1) return 8;
-  if (level === 2) return 14;
-  if (level === 3) return 20;
-  if (level === 4) return 31;
+  if (level === 1) return maxRoundCount = 8;
+  if (level === 2) return maxRoundCount = 14;
+  if (level === 3) return maxRoundCount = 20;
+  if (level === 4) return maxRoundCount = 31;
   return "Please enter level 1, 2, 3, or 4";
 }
 
@@ -192,6 +192,7 @@ function setText(element, text) {
  */
 
 function activatePad(color) {
+  console.log(color) //REMOVE AFTER TESTING
   let pad = pads.find((pad) => pad.color === color);
   pad.selector.classList.add("activated");
   pad.sound.play();
