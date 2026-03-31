@@ -107,8 +107,6 @@ function startButtonHandler() {
 function padHandler(event) {
   const { color } = event.target.dataset;
   if (!color) return;
-
-  // TODO: Write your code here.
   let pad = pads.find((pad) => pad.color === color);
   pad.sound.play();
   checkPress(color);
@@ -255,6 +253,24 @@ function activatePads(sequence) {
 
   setTimeout(() => playHumanTurn(roundCount), roundCount * 600 + 1000); // 5
 }
+
+function changeLevel() {
+  let selectedLevel = document.getElementById("levelSelect").value;
+  console.log(selectedLevel)
+  setLevel(selectedLevel);
+  if (value === 'level1') return level = 1;
+  if (value === 'level2') return level = 2;
+  if (value === 'level3') return level = 3;
+  if (value === 'level4') return level = 4;
+}
+
+const selectElement = document.getElementById("levelSelect");
+const textBoxElement = document.getElementById("currentLevelTxt");
+
+selectElement.addEventListener("change", changeLevel()); {
+  const selectedValue = this.value;
+  textBoxElement.value = selectedValue;
+};
 
 /**
  * Allows the player to play their turn.

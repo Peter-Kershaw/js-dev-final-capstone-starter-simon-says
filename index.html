@@ -9,11 +9,9 @@
   </head>
   <body>
     <main>
-      <!--TODO: Add the missing information in the h1 heading -->
       <h1 class="js-heading">Simon Says!</h1>
 
       <section class="game-controls">
-        <!--TODO: Add the start button -->
         <button class="start-button js-start-button">start</button>
         <span class="status hidden js-status"></span>
       </section>
@@ -23,8 +21,22 @@
         <div class="pad pad-green js-pad-green" data-color="green"></div>
         <div class="pad pad-blue js-pad-blue" data-color="blue"></div>
         <div class="pad pad-yellow js-pad-yellow" data-color="yellow"></div>
-        <!--TODO: Add the missing pads -->
       </section>
+
+      <section>
+        <h2 id="currentLevelTxt">Current Level: 'PLACEHOLDER'</h2>
+        <div class="levelSelectBox">
+          <p>Select Level:</p>
+          <select id="levelSelect">
+            <option value="level1">Please Select A Level</option>
+            <option value="level1">Level 1</option>
+            <option value="level2">Level 2</option>
+            <option value="level3">Level 3</option>
+            <option value="level4">Level 4</option>
+          </select>
+        </div>
+      </section>
+
     </main>
     <script src="./src/index.js"></script>
   </body>

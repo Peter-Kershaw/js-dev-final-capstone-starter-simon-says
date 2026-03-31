@@ -141,3 +141,10 @@ h1 {
 .unclickable {
   pointer-events: none;
 }
+
+.levelSelectBox {
+  flex-direction: row;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
