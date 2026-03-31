@@ -54,15 +54,18 @@ startButton.addEventListener("click", startButtonHandler);
  * EVENT HANDLERS
  */
 
+//grabs the value from the dropdown menu and returns the value
 function changeLevel() {
   selectLevel = document.getElementById('level-selector').value;
   console.log("selected level:", selectLevel);
   return selectLevel;
 }
 
+//starts the game, sets max rounds based on selected level in the drop down.
+//makes the start button dissappear and prevents the drop down from being selected
+//reveals the status text and starts computers turn
 function startButtonHandler() {
   setLevel(selectLevel);
-  console.log('rounds this game: ', maxRoundCount);
   roundCount++;
   document.querySelector(".js-level-select").classList.add("unclickable");
   document.querySelector(".js-start-button").classList.add("hidden");
@@ -71,10 +74,13 @@ function startButtonHandler() {
   return { startButton, statusSpan };
 }
 
+//called when a pac is clicked. takes the color from the activated pad and stores
+//in th color variable. plays the sound for the matching pad. 
 function padHandler(event) {
   const { color } = event.target.dataset;
   if (!color) return;
   let pad = pads.find((pad) => pad.color === color);
+  pad.sound.currentTime = 0;
   pad.sound.play();
   checkPress(color);
   return color;
@@ -84,38 +90,42 @@ function padHandler(event) {
  * HELPER FUNCTIONS
  */
 
+//sets the level of the game, defaulting to level 1 and sets the equivalent amount
+// of rounds per level. 
 function setLevel(selectLevel = 1) {
-  console.log("current lev: ", selectLevel)
   if (selectLevel == 1) return maxRoundCount = 8;
   if (selectLevel == 2) return maxRoundCount = 14;
   if (selectLevel == 3) return maxRoundCount = 20;
   if (selectLevel == 4) return maxRoundCount = 31;
 }
 
-
+//randomly selects a color from the color array.
 function getRandomItem(collection) {
   if (collection.length === 0) return null;
   const randomIndex = Math.floor(Math.random() * collection.length);
   return collection[randomIndex];
 }
 
-
+//sets the status text with a given message.
 function setText(element, text) {
   element.textContent = text;
   return element;
 }
 
-
+//activates a pad of a given color, playing its sound and light.
+// delay between each pad to legibility. 
 function activatePad(color) {
-  console.log(color) //REMOVE AFTER TESTING
   let pad = pads.find((pad) => pad.color === color);
   pad.selector.classList.add("activated");
+  pad.sound.currentTime = 0;
   pad.sound.play();
   setTimeout(() => {
     pad.selector.classList.remove("activated");
     }, 500);
   }
 
+//activates a sequence of pads from the pads array
+//calls the activatepad function per pad activated. 
 function activatePads(sequence) {
   sequence.forEach((color, index) => {
     setTimeout(() => {
@@ -124,6 +134,11 @@ function activatePads(sequence) {
   })
 }
 
+//the computers turn.
+//makes the pads uninteractable, and changes the status to Simons turn. 
+//displays the current and total rounds in the status. 
+//collects random sequence of colors and calls the funtion to activate them.
+//at the end of the function, playHuman() is called. 
  function playComputerTurn() {
   document.querySelector(".js-pad-container").classList.add("unclickable");
   setText(statusSpan, "Simon's turn...");
@@ -134,11 +149,16 @@ function activatePads(sequence) {
   setTimeout(() => playHumanTurn(roundCount), roundCount * 600 + 1000); // 5
 }
 
+//makes pads clickable again and changes status to players turn. 
 function playHumanTurn() {
   document.querySelector(".js-pad-container").classList.remove("unclickable");
   setText(statusSpan, "Players turn...");
 }
 
+
+// displays how many moves are left if the player has not made all moved. 
+// if the player make a mistake the function ends the game and alerts the player, 
+// then resets the game.
 function checkPress(color) {
   playerSequence.push(color);
   const index = playerSequence.length - 1;
@@ -154,6 +174,9 @@ function checkPress(color) {
   }
 }
 
+// checks to see if the player has made all of thier moves. 
+// increments round count after completing a round
+// 
 function checkRound() {
   if (playerSequence.length === maxRoundCount) {
     resetGame("You win!");
@@ -166,6 +189,10 @@ function checkRound() {
   }
 }
 
+// resets the game. empties the computerSequence, playerSequence arrays.
+// sets the roundCounter variable to 0
+// unhides the start button, hides the status screen, makes the pads unclickable.
+// makes the level selector dropdown unclickable 
 function resetGame(text) {
   computerSequence = [];
   playerSequence = [];
