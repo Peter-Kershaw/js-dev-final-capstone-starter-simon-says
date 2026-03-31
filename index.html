@@ -24,15 +24,14 @@
       </section>
 
       <section>
-        <h2 id="currentLevelTxt">Current Level: 'PLACEHOLDER'</h2>
-        <div class="levelSelectBox">
+        <h2 id="currentLevelTxt">Select Level: </h2>
+        <div class="level-select-box">
           <p>Select Level:</p>
-          <select id="levelSelect">
-            <option value="level1">Please Select A Level</option>
-            <option value="level1">Level 1</option>
-            <option value="level2">Level 2</option>
-            <option value="level3">Level 3</option>
-            <option value="level4">Level 4</option>
+          <select class="level-select js-level-select" id="level-selector" onchange="changeLevel()">
+            <option value="1" activated>Level 1</option>
+            <option value="2">Level 2</option>
+            <option value="3">Level 3</option>
+            <option value="4">Level 4</option>
           </select>
         </div>
       </section>

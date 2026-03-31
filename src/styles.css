@@ -140,9 +140,14 @@ h1 {
 
 .unclickable {
   pointer-events: none;
+  cursor: not-allowed;
 }
 
-.levelSelectBox {
+select.unclickable {
+  background-color: darkgray;
+}
+
+.level-select-box {
   flex-direction: row;
   display: flex;
   justify-content: space-evenly;
