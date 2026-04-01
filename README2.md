@@ -1,25 +1,24 @@
 <h1>Simon Says</h1>
-<h3>A.<h3> 
-Simon Says
-<h4>The Game Loop</h4>
-1. startButtonHandler()
-2. playComputerTurn()
-3. playHumanTurn()
-4. checkPress()
-5. resetGame() or checkRound(): If resetGame then back to 1., if checkRound back to 6..
-6. resetGame() or playComputerTurn(). If resetGame, game is won. Otherwise, back to 2..
 
-<h3>B.<h3>  
+<h2>Revisions<h2>
+- Added screenshots of functions to README2.md.
+- Provided a breakdown for each funtion in seciton G of README2.md. 
+- Made README2.md more readable. 
+
+
+<h3>A.The Game:<h3> 
+Simon Says
+<h3>B. The Plan:<h3>  
 My plan is was to complete each section of the README.md and test for successes and failures along the way. After finishing I wanted to add a feature to select a level. 
-<h3>C.<h3> 
+<h3>C. The Implementation:<h3> 
 I filled out code for each sections and after completing the required tasks, I went back and troubleshooted any functions that were not working properly. 
-<h3>D.<h3>  
+<h3>D. Reflection:<h3>  
 I used a variety of techniques to complete the assignments. I did my best to group up any additional variable and functions seemlessly into the code that was provided. 
-<h3>E.<h3>  
+<h3>E. Justification:<h3>  
 I had two main pain points during this project. The first was getting the correct level to apply to the game. On my first few attempts I got the famous JS error '[object, Object]' when trying to apply the correct round max value to the status window. The second problem I had was when creating the bonus feature of selecting a level. The issue was the value from the select drop down was not being returned correctly to be used in the setLevel() function. 
-<h3>F.<h3>  
+<h3>F. AI Tools:<h3>  
 I used AI tools once in the assignment, ClaudeAI. This was used to fix a bug where if the same color pad was selected twice or more in a row by the computer or the player, the sound would not play after the first time. I used AI to fix this bug as I was stumped with how to solve the problem. I used this as an opportunity to practice with AI without relying on it for the whole project. I was encouraged throughout the course by the mentors to become familiar with these AI tools. After prompting ClaudeAI, it helped provide a solution that was rather simple. 
-<h3>G.<h3>  
+<h3>G. The Process:<h3>  
 I knew the project would take time to complete, so I set aside a few days to complete it in ~3 hour sessions. I started by completing all of the functions and user stories in order from the README.md. Afterwards, I tested the game and solved the aforementioned large bugs that prevented the game from having a max round limit. After solving the bugs of the main game, I implemented the feature to select the level of challenge for the game. This led to more bugs that required tests to see at what point the problems were occuring. I used to drop down box to select the desired level and finished by changing some of the colors and the background for the website. I cleaned up the text and made my level select addition to match the visual effects of the provided CSS button to make the site cohesive in design. At one point I attempted to make the layout more horizontal but it made the game unplayable on mobile devices so I reverted those changes. 
 
 <h4>Break Down of Key Funcions</h4>
@@ -98,15 +97,10 @@ I knew the project would take time to complete, so I set aside a few days to com
 ![](assets/resetGame.png)
 
 
-<h3>H.<h3>  
-See github commits via provided links
+<h3>H. Github Links:<h3>  
 
+- https://github.com/Peter-Kershaw/js-dev-final-capstone-starter-simon-says 
 
-TO DO:
-However, it would benefit from a more structured technical explanation of key functions and logic. Also, while commit history is present, Replit or development screenshots are missing, which are required.
+- https://peter-kershaw.github.io/js-dev-final-capstone-starter-simon-says/ 
 
-
-Optional:
-1. Add more comments for better code readability
-2. Include features like score tracking or animations
-3. Show test results (e.g., npm test)
+- https://github.com/Peter-Kershaw/js-dev-final-capstone-starter-simon-says/blob/main/README2.md
