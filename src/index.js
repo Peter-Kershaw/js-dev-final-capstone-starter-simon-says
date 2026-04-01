@@ -57,7 +57,6 @@ startButton.addEventListener("click", startButtonHandler);
 //grabs the value from the dropdown menu and returns the value
 function changeLevel() {
   selectLevel = document.getElementById('level-selector').value;
-  console.log("selected level:", selectLevel);
   return selectLevel;
 }
 
@@ -74,7 +73,7 @@ function startButtonHandler() {
   return { startButton, statusSpan };
 }
 
-//called when a pac is clicked. takes the color from the activated pad and stores
+//called when a pad is clicked. takes the color from the activated pad and stores
 //in th color variable. plays the sound for the matching pad. 
 function padHandler(event) {
   const { color } = event.target.dataset;
